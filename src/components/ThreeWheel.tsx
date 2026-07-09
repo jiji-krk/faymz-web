@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import { Music, Briefcase, Star, Trophy, Camera, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -106,7 +106,7 @@ const ThreeWheel: React.FC = () => {
           >
             <div style={{ color: selectedCat.color, marginBottom: '1rem' }}>{selectedCat.icon}</div>
             <h2 style={{ fontSize: '2rem', marginBottom: '1rem', color: 'var(--accent)' }}>{t('wheel.prefix')}{t(`wheel.cats.${selectedCat.id}`)}</h2>
-            <p 
+            <p
               style={{ fontSize: '1.25rem', color: 'var(--text-muted)', lineHeight: '1.7', fontWeight: 400 }}
               dangerouslySetInnerHTML={{ __html: t(`wheel.cats.${selectedCat.id}_desc`) }}
             />
