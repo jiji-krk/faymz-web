@@ -1,55 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import { Music, Briefcase, Star, Trophy, Camera, Sparkles } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import rouletteImg from '../assets/roulette.png';
 
 const categories = [
-  {
-    id: 'entrepreneur',
-    label: 'Entrepreneurs',
-    icon: <Briefcase size={20} />,
-    color: '#0F172A',
-    details: <>Fondateurs, business angels, investisseurs, experts et mentors stratégiques.<br /><br />Exemple d'expérience inédite : Session « Pitch & Feedback » ou masterclass sur la levée de fonds avec un business angel renommé ou un entrepreneur à succès, pour bénéficier de conseils sur-mesure et d'un regard critique sur votre projet.</>
-  },
-  {
-    id: 'talents',
-    label: 'Talents',
-    icon: <Star size={20} />,
-    color: '#D4AF37',
-    details: <>Acteurs, humoristes, artistes et autres profils créatifs de la scène et de l'écran.<br /><br />Exemple d'expérience inédite : Un « mini-show privé » avec un humoriste.</>
-  },
-  {
-    id: 'sport',
-    label: 'Sport',
-    icon: <Trophy size={20} />,
-    color: '#0F172A',
-    details: <>Athlètes professionnels, coachs de haut niveau et figures emblématiques du sport.<br /><br />Exemple d'expérience inédite : Entraînement tactique avec un footballeur pro.</>
-  },
-  {
-    id: 'musique',
-    label: 'Musique',
-    icon: <Music size={20} />,
-    color: '#D4AF37',
-    details: <>Chanteurs, musiciens, producteurs et professionnels de l'industrie musicale.<br /><br />Exemple d'expérience inédite : Session VIP en studio avec un artiste pour découvrir les coulisses d'un enregistrement, écouter des maquettes exclusives etc...</>
-  },
-  {
-    id: 'influence',
-    label: 'Influence',
-    icon: <Camera size={20} />,
-    color: '#0F172A',
-    details: <>Créateurs de contenu, influenceurs digitaux et personnalités publiques des réseaux sociaux.<br /><br />Exemple d'expérience inédite : Atelier immersion pour percer les secrets de la création de contenu. Pour les marques, Faymz peut être l'occasion pour vous de présenter un produit ou initier une collaboration stratégique.</>
-  },
-  {
-    id: 'autre',
-    label: 'Autre',
-    icon: <Sparkles size={20} />,
-    color: '#D4AF37',
-    details: <>Des expériences entièrement sur-mesure pour donner vie à des moments d'exception.</>
-  },
+  { id: 'entrepreneur', icon: <Briefcase size={20} />, color: '#0F172A' },
+  { id: 'talents', icon: <Star size={20} />, color: '#D4AF37' },
+  { id: 'sport', icon: <Trophy size={20} />, color: '#0F172A' },
+  { id: 'musique', icon: <Music size={20} />, color: '#D4AF37' },
+  { id: 'influence', icon: <Camera size={20} />, color: '#0F172A' },
+  { id: 'autre', icon: <Sparkles size={20} />, color: '#D4AF37' },
 ];
 
 const ThreeWheel: React.FC = () => {
-  const [selectedCat, setSelectedCat] = useState(categories[0]);
+  const { t } = useTranslation();
+  const [selectedCatId, setSelectedCatId] = useState(categories[0].id);
   const [isSpinning, setIsSpinning] = useState(false);
   const controls = useAnimation();
 
@@ -66,6 +32,8 @@ const ThreeWheel: React.FC = () => {
     });
     setIsSpinning(false);
   };
+
+  const selectedCat = categories.find(c => c.id === selectedCatId) || categories[0];
 
   return (
     <div style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '1rem', background: 'var(--bg)' }}>
@@ -96,7 +64,7 @@ const ThreeWheel: React.FC = () => {
 
       {/* Title After Roulette */}
       <h3 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '3rem', textAlign: 'center', color: 'var(--accent)' }}>
-        Explorez les univers Faymz
+        {t('wheel.title')}
       </h3>
 
       {/* Categories Grid */}
@@ -105,23 +73,23 @@ const ThreeWheel: React.FC = () => {
           {categories.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setSelectedCat(cat)}
+              onClick={() => setSelectedCatId(cat.id)}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
                 padding: '0.75rem 1.5rem',
                 borderRadius: '50px',
-                background: selectedCat.id === cat.id ? 'var(--accent)' : 'var(--bg-alt)',
-                color: selectedCat.id === cat.id ? '#fff' : 'var(--text)',
-                border: `1px solid ${selectedCat.id === cat.id ? 'var(--accent)' : 'var(--glass-border)'}`,
+                background: selectedCatId === cat.id ? 'var(--accent)' : 'var(--bg-alt)',
+                color: selectedCatId === cat.id ? '#fff' : 'var(--text)',
+                border: `1px solid ${selectedCatId === cat.id ? 'var(--accent)' : 'var(--glass-border)'}`,
                 fontWeight: 600,
                 transition: 'all 0.3s ease',
                 cursor: 'pointer'
               }}
             >
               {cat.icon}
-              {cat.label}
+              {t(`wheel.cats.${cat.id}`)}
             </button>
           ))}
         </div>
@@ -137,10 +105,11 @@ const ThreeWheel: React.FC = () => {
             style={{ padding: '2.5rem', textAlign: 'left', borderLeft: `6px solid ${selectedCat.color}` }}
           >
             <div style={{ color: selectedCat.color, marginBottom: '1rem' }}>{selectedCat.icon}</div>
-            <h2 style={{ fontSize: '2rem', marginBottom: '1rem', color: 'var(--accent)' }}>Faymz x {selectedCat.label}</h2>
-            <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', lineHeight: '1.7', fontWeight: 400 }}>
-              {selectedCat.details}
-            </p>
+            <h2 style={{ fontSize: '2rem', marginBottom: '1rem', color: 'var(--accent)' }}>{t('wheel.prefix')}{t(`wheel.cats.${selectedCat.id}`)}</h2>
+            <p 
+              style={{ fontSize: '1.25rem', color: 'var(--text-muted)', lineHeight: '1.7', fontWeight: 400 }}
+              dangerouslySetInnerHTML={{ __html: t(`wheel.cats.${selectedCat.id}_desc`) }}
+            />
           </motion.div>
         </AnimatePresence>
       </div>

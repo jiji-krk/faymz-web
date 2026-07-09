@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import promoImg from '../assets/image.png';
 
 const PromoSection: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <section style={{ padding: '4rem 2rem', background: 'var(--bg)' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
@@ -12,13 +15,13 @@ const PromoSection: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem', lineHeight: 1.2 }}>
-            L'expérience <span className="gradient-text">Faymz</span> entre vos mains.
+            {t('promo.title_part1')}<span className="gradient-text">{t('promo.title_highlight')}</span>{t('promo.title_part2')}
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '2rem' }}>
-            Parcourez notre catalogue de talents, réservez vos créneaux et vivez des moments d'exception.
+            {t('promo.subtitle')}
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <button className="btn-primary">App Store</button>
+            <button className="btn-primary">{t('promo.btn')}</button>
           </div>
         </motion.div>
 

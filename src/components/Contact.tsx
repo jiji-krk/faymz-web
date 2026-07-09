@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Contact: React.FC = () => {
+  const { t } = useTranslation();
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [resultMessage, setResultMessage] = useState('');
@@ -19,7 +21,7 @@ const Contact: React.FC = () => {
     const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
     if (!accessKey) {
       setStatus('error');
-      setResultMessage("Configuration manquante : Clé d'accès introuvable.");
+      setResultMessage(t('contact.msg_error_config'));
       setSubmitting(false);
       return;
     }
@@ -30,7 +32,7 @@ const Contact: React.FC = () => {
     if (botcheck) {
       // If honeypot is filled, act like it succeeded but don't submit
       setStatus('success');
-      setResultMessage('Merci ! Votre message a bien été envoyé.');
+      setResultMessage(t('contact.msg_success'));
       form.reset();
       setSubmitting(false);
       return;
@@ -45,15 +47,15 @@ const Contact: React.FC = () => {
       const data = await response.json();
       if (data.success) {
         setStatus('success');
-        setResultMessage('Merci ! Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
+        setResultMessage(t('contact.msg_success'));
         form.reset();
       } else {
         setStatus('error');
-        setResultMessage(data.message || 'Une erreur est survenue lors de l\'envoi du message.');
+        setResultMessage(data.message || t('contact.msg_error_default'));
       }
     } catch (error) {
       setStatus('error');
-      setResultMessage('Une erreur réseau est survenue. Veuillez réessayer plus tard.');
+      setResultMessage(t('contact.msg_error_network'));
     } finally {
       setSubmitting(false);
     }
@@ -69,8 +71,8 @@ const Contact: React.FC = () => {
         style={{ maxWidth: '600px', width: '100%' }}
       >
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Nous Contacter</h2>
-          <p style={{ color: 'var(--text-muted)' }}>Vous avez une question ou souhaitez rejoindre l'aventure Faymz ?</p>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{t('contact.title')}</h2>
+          <p style={{ color: 'var(--text-muted)' }}>{t('contact.subtitle')}</p>
         </div>
 
         <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -78,11 +80,11 @@ const Contact: React.FC = () => {
           <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)' }}>NOM COMPLET</label>
+            <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)' }}>{t('contact.form_name_label')}</label>
             <input 
               type="text" 
               name="name"
-              placeholder="Votre nom"
+              placeholder={t('contact.form_name_placeholder')}
               required
               disabled={submitting}
               style={{
@@ -99,11 +101,11 @@ const Contact: React.FC = () => {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)' }}>EMAIL</label>
+            <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)' }}>{t('contact.form_email_label')}</label>
             <input 
               type="email" 
               name="email"
-              placeholder="votre@email.com"
+              placeholder={t('contact.form_email_placeholder')}
               required
               disabled={submitting}
               style={{
@@ -120,11 +122,11 @@ const Contact: React.FC = () => {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)' }}>MESSAGE</label>
+            <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)' }}>{t('contact.form_message_label')}</label>
             <textarea 
               name="message"
               rows={4}
-              placeholder="Comment pouvons-nous vous aider ?"
+              placeholder={t('contact.form_message_placeholder')}
               required
               disabled={submitting}
               style={{
@@ -154,7 +156,7 @@ const Contact: React.FC = () => {
               opacity: submitting ? 0.7 : 1
             }}
           >
-            {submitting ? 'Envoi en cours...' : 'Envoyer'} <Send size={18} />
+            {submitting ? t('contact.btn_sending') : t('contact.btn_send')} <Send size={18} />
           </button>
         </form>
 

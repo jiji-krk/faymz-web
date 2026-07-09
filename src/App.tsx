@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import Navbar from './components/Navbar';
 import ThreeWheel from './components/ThreeWheel';
 import Concept from './components/Concept';
@@ -7,6 +8,8 @@ import { motion } from 'framer-motion';
 import PromoSection from './components/PromoSection';
 
 function App() {
+  const { t } = useTranslation();
+
   return (
     <div className="app">
       <Navbar />
@@ -19,7 +22,7 @@ function App() {
             transition={{ duration: 1 }}
             style={{ fontSize: '5rem', fontWeight: 800, lineHeight: 1.1, marginBottom: '3rem' }}
           >
-            Rencontrez les profils qui vous <span className="gradient-text">inspirent</span>
+            {t('hero.title_part1')} <span className="gradient-text">{t('hero.title_highlight')}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -34,7 +37,7 @@ function App() {
               lineHeight: '1.6'
             }}
           >
-            Que vous souhaitiez transmettre votre expertise et valoriser votre temps, ou vivre un moment d'échange privilégié avec ceux qui vous inspirent, Faymz rend l'accès simple et authentique.
+            {t('hero.subtitle')}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -42,7 +45,7 @@ function App() {
             transition={{ duration: 1, delay: 0.4 }}
             style={{ marginBottom: '3rem' }}
           >
-            <button className="btn-primary">Découvrir l'App</button>
+            <button className="btn-primary">{t('hero.cta')}</button>
           </motion.div>
         </div>
 
@@ -54,7 +57,7 @@ function App() {
       <Contact />
 
       <footer style={{ padding: '4rem 2rem', borderTop: '1px solid var(--glass-border)', textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-        <p>&copy; 2026 FAYMZ. Tous droits réservés.</p>
+        <p>{t('footer.copyright')}</p>
       </footer>
     </div>
   );

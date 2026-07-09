@@ -1,8 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import logo from '../assets/logo.png';
 
 const Navbar: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language.startsWith('fr') ? 'en' : 'fr';
+    i18n.changeLanguage(newLang);
+  };
+
   return (
     <motion.nav 
       initial={{ y: -100, opacity: 0 }}
@@ -28,10 +36,29 @@ const Navbar: React.FC = () => {
         </h1>
       </div>
       
-      <div style={{ display: 'flex', gap: '2rem' }}>
-        <a href="#home" style={{ textDecoration: 'none', color: 'var(--text)', fontWeight: 500, fontSize: '0.9rem' }}>ACCUEIL</a>
-        <a href="#concept" style={{ textDecoration: 'none', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.9rem' }}>CONCEPT</a>
-        <a href="#contact" style={{ textDecoration: 'none', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.9rem' }}>NOUS CONTACTER</a>
+      <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+        <a href="#home" style={{ textDecoration: 'none', color: 'var(--text)', fontWeight: 500, fontSize: '0.9rem' }}>{t('nav.home')}</a>
+        <a href="#concept" style={{ textDecoration: 'none', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.9rem' }}>{t('nav.concept')}</a>
+        <a href="#contact" style={{ textDecoration: 'none', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.9rem' }}>{t('nav.contact')}</a>
+        
+        <button 
+          onClick={toggleLanguage}
+          style={{
+            background: 'var(--glass-bg)',
+            border: '1px solid var(--glass-border)',
+            padding: '0.4rem 0.8rem',
+            borderRadius: '20px',
+            color: 'var(--text)',
+            cursor: 'pointer',
+            fontSize: '0.8rem',
+            fontWeight: 600,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.3rem'
+          }}
+        >
+          {i18n.language.startsWith('fr') ? 'FR' : 'EN'}
+        </button>
       </div>
     </motion.nav>
   );

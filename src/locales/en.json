@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "home": "HOME",
+    "concept": "CONCEPT",
+    "contact": "CONTACT US"
+  },
+  "hero": {
+    "title_part1": "Meet the profiles that ",
+    "title_highlight": "inspire you",
+    "subtitle": "Whether you want to pass on your expertise and value your time, or experience a privileged moment of exchange with those who inspire you, Faymz makes access simple and authentic.",
+    "cta": "Discover the App"
+  },
+  "concept": {
+    "title_part1": "The ",
+    "title_highlight": "Faymz",
+    "card1_title": "1:1 Session",
+    "card1_desc": "An exclusive online meeting with your favorite personality for a personalized exchange, advice, or a privileged moment.",
+    "card2_title": "Group Event",
+    "card2_desc": "Online collective sessions or face-to-face meetings to share a unique experience with a community."
+  },
+  "promo": {
+    "title_part1": "The ",
+    "title_highlight": "Faymz",
+    "title_part2": " experience in your hands.",
+    "subtitle": "Browse our catalog of talents, book your slots and live exceptional moments.",
+    "btn": "App Store"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a question or want to join the Faymz adventure?",
+    "form_name_label": "FULL NAME",
+    "form_name_placeholder": "Your name",
+    "form_email_label": "EMAIL",
+    "form_email_placeholder": "your@email.com",
+    "form_message_label": "MESSAGE",
+    "form_message_placeholder": "How can we help you?",
+    "btn_sending": "Sending...",
+    "btn_send": "Send",
+    "msg_success": "Thank you! Your message has been sent. We will get back to you as soon as possible.",
+    "msg_error_config": "Missing configuration: Access key not found.",
+    "msg_error_default": "An error occurred while sending the message.",
+    "msg_error_network": "A network error occurred. Please try again later."
+  },
+  "wheel": {
+    "title": "Explore Faymz universes",
+    "prefix": "Faymz x ",
+    "cats": {
+      "entrepreneur": "Entrepreneurs",
+      "entrepreneur_desc": "Founders, business angels, investors, experts, and strategic mentors.<br /><br />Example of an original experience: \"Pitch & Feedback\" session or masterclass on fundraising with a renowned business angel or successful entrepreneur, to benefit from tailored advice and a critical look at your project.",
+      "talents": "Talents",
+      "talents_desc": "Actors, comedians, artists, and other creative profiles from stage and screen.<br /><br />Example of an original experience: A \"private mini-show\" with a comedian.",
+      "sport": "Sports",
+      "sport_desc": "Professional athletes, top-level coaches, and iconic figures from the sports world.<br /><br />Example of an original experience: Tactical training with a pro football player.",
+      "musique": "Music",
+      "musique_desc": "Singers, musicians, producers, and professionals from the music industry.<br /><br />Example of an original experience: VIP studio session with an artist to discover behind-the-scenes recording, listen to exclusive demos, etc...",
+      "influence": "Influence",
+      "influence_desc": "Content creators, digital influencers, and social media public figures.<br /><br />Example of an original experience: Immersion workshop to uncover the secrets of content creation. For brands, Faymz can be an opportunity to present a product or initiate a strategic collaboration.",
+      "autre": "Other",
+      "autre_desc": "Fully tailor-made experiences to bring exceptional moments to life."
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 FAYMZ. All rights reserved."
+  }
+}
