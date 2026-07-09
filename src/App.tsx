@@ -14,13 +14,13 @@ function App() {
     <div className="app">
       <Navbar />
 
-      <section id="home" className="section" style={{ paddingTop: '8rem' }}>
-        <div style={{ textAlign: 'center', marginBottom: '0', maxWidth: '800px' }}>
+      <section id="home" className="section" style={{ paddingTop: 'clamp(5rem, 15vh, 8rem)' }}>
+        <div style={{ textAlign: 'center', marginBottom: '0', maxWidth: '800px', width: '100%' }}>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            style={{ fontSize: '5rem', fontWeight: 800, lineHeight: 1.1, marginBottom: '3rem' }}
+            style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: 'clamp(1.5rem, 4vw, 3rem)' }}
           >
             {t('hero.title_part1')} <span className="gradient-text">{t('hero.title_highlight')}</span>
           </motion.h1>
@@ -29,9 +29,9 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
             style={{
-              fontSize: '1.2rem',
+              fontSize: 'clamp(1rem, 3vw, 1.2rem)',
               color: 'var(--text-muted)',
-              textAlign: 'left',
+              textAlign: 'center',
               maxWidth: '620px',
               margin: '0 auto 2.5rem auto',
               lineHeight: '1.6'

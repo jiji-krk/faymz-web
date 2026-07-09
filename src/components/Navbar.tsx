@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
         position: 'fixed',
         top: 0,
         width: '100%',
-        padding: '1.5rem 2rem',
+        padding: 'clamp(1rem, 3vw, 1.5rem) clamp(1rem, 5vw, 2rem)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -29,17 +29,17 @@ const Navbar: React.FC = () => {
         borderBottom: '1px solid var(--glass-border)'
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <img src={logo} alt="Faymz Logo" style={{ height: '45px', width: 'auto' }} />
-        <h1 style={{ fontSize: '1.8rem', fontWeight: 800, letterSpacing: '-1px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 2vw, 1rem)' }}>
+        <img src={logo} alt="Faymz Logo" style={{ height: 'clamp(30px, 8vw, 45px)', width: 'auto' }} />
+        <h1 style={{ fontSize: 'clamp(1.2rem, 5vw, 1.8rem)', fontWeight: 800, letterSpacing: '-1px' }}>
           FAYMZ<span style={{ color: 'var(--accent-gold)' }}>.</span>
         </h1>
       </div>
       
-      <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-        <a href="#home" style={{ textDecoration: 'none', color: 'var(--text)', fontWeight: 500, fontSize: '0.9rem' }}>{t('nav.home')}</a>
-        <a href="#concept" style={{ textDecoration: 'none', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.9rem' }}>{t('nav.concept')}</a>
-        <a href="#contact" style={{ textDecoration: 'none', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.9rem' }}>{t('nav.contact')}</a>
+      <div style={{ display: 'flex', gap: 'clamp(0.5rem, 3vw, 2rem)', alignItems: 'center' }}>
+        <a href="#home" style={{ textDecoration: 'none', color: 'var(--text)', fontWeight: 500, fontSize: 'clamp(0.7rem, 2.5vw, 0.9rem)' }}>{t('nav.home')}</a>
+        <a href="#concept" style={{ textDecoration: 'none', color: 'var(--text-muted)', fontWeight: 500, fontSize: 'clamp(0.7rem, 2.5vw, 0.9rem)' }}>{t('nav.concept')}</a>
+        <a href="#contact" style={{ textDecoration: 'none', color: 'var(--text-muted)', fontWeight: 500, fontSize: 'clamp(0.7rem, 2.5vw, 0.9rem)' }}>{t('nav.contact')}</a>
         
         <button 
           onClick={toggleLanguage}

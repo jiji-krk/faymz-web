@@ -71,7 +71,7 @@ const Contact: React.FC = () => {
         style={{ maxWidth: '600px', width: '100%' }}
       >
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{t('contact.title')}</h2>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', marginBottom: '1rem' }}>{t('contact.title')}</h2>
           <p style={{ color: 'var(--text-muted)' }}>{t('contact.subtitle')}</p>
         </div>
 

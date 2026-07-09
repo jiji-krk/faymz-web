@@ -63,7 +63,7 @@ const ThreeWheel: React.FC = () => {
       </div>
 
       {/* Title After Roulette */}
-      <h3 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '3rem', textAlign: 'center', color: 'var(--accent)' }}>
+      <h3 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 700, marginBottom: 'clamp(1.5rem, 4vw, 3rem)', textAlign: 'center', color: 'var(--accent)' }}>
         {t('wheel.title')}
       </h3>
 

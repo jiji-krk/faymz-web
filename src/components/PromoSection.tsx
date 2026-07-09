@@ -7,14 +7,14 @@ const PromoSection: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section style={{ padding: '4rem 2rem', background: 'var(--bg)' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+    <section style={{ padding: 'clamp(2rem, 5vw, 4rem) 1.5rem', background: 'var(--bg)' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 'clamp(2rem, 5vw, 4rem)', alignItems: 'center' }}>
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem', lineHeight: 1.2 }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1.5rem', lineHeight: 1.2 }}>
             {t('promo.title_part1')}<span className="gradient-text">{t('promo.title_highlight')}</span>{t('promo.title_part2')}
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '2rem' }}>
